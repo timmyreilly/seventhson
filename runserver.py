@@ -6,6 +6,7 @@ app = Flask(__name__)
 #This will be the general blog (before logging in)
 @app.route("/", methods = ["GET", "POST"])
 def home():
+    '''
     blogs = db_methods.getPosts()
     if session.has_key("loggedIn") and session["loggedIn"]:
         if request.form.has_key("BlogID"):
@@ -20,6 +21,8 @@ def home():
             return redirect(url_for("login"))
         else:
             return render_template("cards.html", loggedIn = False, blogs = blogs)
+    '''
+    return render_template("test.html")
 
 @app.route("/login", methods = ["GET", "POST"])
 def login():
