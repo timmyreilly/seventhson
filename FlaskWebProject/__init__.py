@@ -4,23 +4,26 @@ import db_methods
 app = Flask(__name__)
 
 #This will be the general blog (before logging in)
-@app.route("/", methods = ["GET", "POST"])
+@app.route("/")
+@app.route("/home")
 def home():
 
+@app.route("/feed", methods = ["GET", "POST"])
+def feed():
     blogs = db_methods.getPosts()
     if session.has_key("loggedIn") and session["loggedIn"]:
         if request.form.has_key("BlogID"):
-            return render_template("cards.html", loggedIn = True, username = session["username"], blogs = blogs, editing = request.form["BlogID"])
+            return render_template("feed.html", loggedIn = True, username = session["username"], blogs = blogs, editing = request.form["BlogID"])
         else:
             if request.form.has_key("edit"):
                 db_methods.editPost(request.form["edit"], request.form["editedID"])
                 blogs = db_methods.getPosts()
-            return render_template("cards.html", loggedIn = True, username = session["username"], blogs = blogs, editing = "-1")
+            return render_template("feed.html", loggedIn = True, username = session["username"], blogs = blogs, editing = "-1")
     else:
         if request.form.has_key("BlogID"):
             return redirect(url_for("login"))
         else:
-            return render_template("cards.html", loggedIn = False, blogs = blogs)
+            return render_template("feed.html", loggedIn = False, blogs = blogs)
 
 @app.route("/login", methods = ["GET", "POST"])
 def login():
