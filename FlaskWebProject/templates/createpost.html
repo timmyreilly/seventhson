@@ -2,14 +2,14 @@
 <html lang="en">
 
   <head>
-    
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    
-    <title>Create a Post</title>
+
+    <title>Create a Card</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="static/bootstrap.min.css" rel="stylesheet">
@@ -20,7 +20,7 @@
     <!-- favicon-->
     <link rel="shortcut icon" href="static/img/favicon.ico" type="image/x-icon">
     <link rel="icon" href="static/img/favicon.ico" type="image/x-icon">
-    
+
     <!-- Custom Fonts -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
@@ -29,7 +29,7 @@
   </head>
 
   <body>
-    
+
    <!-- Navigation -->
   <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
     <div class="container-fluid">
@@ -41,9 +41,9 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/">Bloginator</a>
+        <a class="navbar-brand" href="/">Seventh Sense</a>
       </div>
-      
+
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
          <ul class="nav navbar-nav navbar-right">
@@ -52,7 +52,7 @@
 	  </li>
 	  {% if session["loggedIn"] %}
 	  <li>
-	    <a href="/myposts" target="_top">My Posts</a>
+	    <a href="/myposts" target="_top">My Cards</a>
 	  </li>
 	  <li>
 		<a href="/createpost" target="_top">Create</a>
@@ -74,14 +74,15 @@
 
     <!-- Page Header -->
     <!-- Set your background image for this header on the line below. -->
-    <header class="intro-header" style="background-image: url('static/img/create-bg.jpg')">
+    <!-- url('static/img/create-bg.jpg') -->
+    <header class="intro-header" style="background-color: black">
       <div class="container">
 	<div class="row">
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <div class="page-heading">
-              <h1>Let's Create {{username}}!</h1>
+              <h2>Let's Create {{username}}!</h2>
               <hr class="small">
-              <span class="subheading">This is a place to share.</span>
+              <span class="subheading">This is a place to create.</span>
             </div>
           </div>
 	</div>
@@ -93,35 +94,35 @@
     <div class="container">
       <div class="row">
 	<div class="col-lg-8 col-lg-offset-2 text-center">
-	  <h1>What do you want to say?</h1>
+	  <h2>What do you want to study?</h2>
 	  <hr class="small">
-	  Post Title:
+	  Card Title:
 	  <br>
 	  <input type="text" name="title" form="postform">
 	  <hr class="small">
-	  Post Content:
+	  Card Content:
 	  <br>
-	  <textarea name="post" form="postform" style="width:90%; height:500px;">
+	  <textarea name="post" form="postform" style="width:90%; height:300px;">
 	  </textarea>
 	  <form method="POST" action="myposts" id="postform" style="padding:5px;">
 	    <input type="submit" name="submit" value="Post">
 	  </form>
 	</div>
       </div>
-	  
+
 	  <hr class="small" style="display:hidden;">
-	  
+
     </div>
-    
+
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
-    
+
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-    
+
     <!-- Custom Theme JavaScript -->
     <script src="js/clean-blog.min.js"></script>
-    
+
   </body>
 
 </html>
