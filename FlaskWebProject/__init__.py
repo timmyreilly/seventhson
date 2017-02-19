@@ -2,12 +2,17 @@ from flask import Flask, render_template, request, session, redirect, url_for
 import db_methods
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'hard to guess'
 
 #This will be the general blog (before logging in)
 @app.route("/")
 @app.route("/home")
 def home():
 	return render_template("home.html")
+
+@app.route("/info")
+def info():
+    return render_template("info.html")
 
 @app.route("/feed", methods = ["GET", "POST"])
 def feed():
@@ -90,5 +95,5 @@ def createpost():
 
 if __name__ == "__main__":
     app.debug = True
-    app.secret_key = "secret_key"
+    app.secret_key = "cheeesee"
     app.run(host='0.0.0.0',port=8001)
