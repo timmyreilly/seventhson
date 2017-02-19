@@ -47,6 +47,17 @@ IF NOT DEFINED KUDU_SYNC_CMD (
   :: Locally just running "kuduSync" would also work
   SET KUDU_SYNC_CMD=%appdata%\npm\kuduSync.cmd
 )
+
+IF NOT DEFINED DEPLOYMENT_TEMP (
+  SET DEPLOYMENT_TEMP=%temp%\___deployTemp%random%
+  SET CLEAN_LOCAL_DEPLOYMENT_TEMP=true
+)
+
+IF DEFINED CLEAN_LOCAL_DEPLOYMENT_TEMP (
+  IF EXIST "%DEPLOYMENT_TEMP%" rd /s /q "%DEPLOYMENT_TEMP%"
+  mkdir "%DEPLOYMENT_TEMP%"
+)
+
 goto Deployment
 
 :: Utility Functions
